@@ -11,7 +11,8 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
+//UIwindow siempre debe existir es el que contiene la vista
+// es el area negra de la pantalla que te permite empezar a trabajar
 
 @end
 
