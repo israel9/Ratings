@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "Player.h"
+#import "PlayersTableViewController.h"
 
 @interface AppDelegate ()
 
@@ -14,8 +16,35 @@
 
 @implementation AppDelegate
 
+NSMutableArray *_players;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    _players = [NSMutableArray arrayWithCapacity:3];
+    
+    Player *player = [[Player alloc] init]; // apuntador del tipo player crea un estancia del elemento inicializa y carga en memoria
+    player.name = @"Bill Evans"; // a un objeto player le está asignando sus propiedades
+    player.game = @"Tic-Tac-Toe";
+    player.rating = 4;
+    [_players addObject:player];
+    
+    player = [[Player alloc] init];
+    player.name = @"Oscar Peterson";
+    player.game = @"Spin the Bottle";
+    player.rating = 5;
+    [_players addObject:player];
+    
+    player = [[Player alloc] init];
+    player.name = @"Dave Brubeck";
+    player.game = @"Texas Hold’em Poker";
+    player.rating = 2;
+    [_players addObject:player];
+    
+    UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
+    UINavigationController *navigationController = [tabBarController viewControllers][0];
+    PlayersTableViewController *playersViewController = [navigationController viewControllers][0];
+    playersViewController.players = _players;
+    
     // Override point for customization after application launch.
     return YES;
 }
